@@ -1,0 +1,13 @@
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX dbc: <http://dbpedia.org/resource/Category:>
+
+SELECT ?city MAX(?establishedDate) AS ?maxEstablishedDate
+FROM <http://dbpedia.org>
+WHERE {
+    ?city a dbo:City.
+    ?city dbo:country dbr:Ukraine.
+    ?city dbp:establishedDate ?establishedDate.
+}
+ORDER BY DESC (?maxEstablishedDate)
+LIMIT 1
